@@ -1,0 +1,36 @@
+{
+  // editor
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.formatOnSave": true,
+  "editor.rulers": [80, 120],
+  "editor.tabSize": 4,
+  "[javascript]": {
+    "editor.formatOnSave": false,
+    "editor.tabSize": 2
+  },
+  "[json]": {
+    "editor.tabSize": 2
+  },
+  // files
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "node_modules": true,
+    ".idea": true,
+    "volumes": true
+  },
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true
+  },
+  // javascript
+  "javascript.validate.enable": false,
+  // search
+  "search.exclude": {
+    "**/node_modules": true
+  }
+}

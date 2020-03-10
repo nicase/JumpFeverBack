@@ -1,0 +1,21 @@
+# OS auto-generated files
+*.DS_Store
+
+# Vim
+*~
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# IDEs
+.idea/
+
+# Node
+node_modules/
+
+# Volumes
+!/volumes
+/volumes/*
+!/volumes/.gitkeep
