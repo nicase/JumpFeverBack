@@ -3,6 +3,14 @@ const container = require('./di/container');
 const HttpServer = require('./ui/HttpServer');
 // eslint-disable-next-line import/order
 const socketio = require('socket.io');
+const {
+  createContainer,
+  InjectionMode,
+  Lifetime,
+  asClass,
+  asFunction,
+  asValue,
+} = require('awilix');
 
 
 // Setup the infrastructure
@@ -35,7 +43,10 @@ httpServer
   .start()
   .then(() => {
     logger.info('Application created.');
-    const io = socketio(httpServer.server);
+    container.register({
+      server: asValue(httpServer.server),
+    });
+    /* const io = socketio(httpServer.server);
     io.on('connection', (socket) => { // TODO: Logica Okey pero s'ha de fer servir en un cas d'us on sapiga qui està jugant el partit perque farem nom socket = 'Player1' + player.id
       socket.on('player1', (data) => {
         socket.emit('player2', data);
@@ -43,7 +54,7 @@ httpServer
       socket.on('player2', (data) => {
         socket.emit('player1', data);
       });
-    });
+    });*/
   })
   .catch((err) => {
     logger.error(`Application error: ${err}`);

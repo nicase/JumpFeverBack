@@ -3,19 +3,20 @@ const server = require('../../../bffServer');
 const Operation = require('../../Operation');
 
 
+
 class StartMatch extends Operation {
   constructor({ matchService }) {
     super();
     this.matchService = matchService;
   }
 
-  async execute() {
+  async execute(server) {
     const { SUCCESS, ERROR, NOT_FOUND } = this.outputs;
 
     try {
       const io = socketio(server);
-      await io.on('connection', (socket) => {
-        socket.emit('qwerty', { hello: 'world33' });
+      io.on('connection', (socket) => {
+        socket.emit('qwerty', {hello: 'qwerty socket'});
       });
 
       return this.emit(SUCCESS, 'OK');

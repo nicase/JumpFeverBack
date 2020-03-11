@@ -3,8 +3,5 @@
     var socket = io('http://localhost:5000');
     socket.on('qwerty', function (data) {
         console.log(data);
-        socket.emit('my other event', {
-            my: 'data'
-        });
     });
 </script>

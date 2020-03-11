@@ -13,6 +13,7 @@ module.exports = [
   checkBadRequestErrors,
   (req, res, next) => {
     const startMatch = req.container.resolve('StartMatch');
+    const server = req.container.resolve('server');
     const {
       SUCCESS, ERROR, NOT_FOUND,
     } = startMatch.outputs;
@@ -31,6 +32,6 @@ module.exports = [
         next(err);
       });
 
-    return startMatch.execute(req.params.id);
+    return startMatch.execute(server);
   },
 ];
