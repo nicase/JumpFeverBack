@@ -1,7 +1,5 @@
 const socketio = require('socket.io');
-const server = require('../../../bffServer');
 const Operation = require('../../Operation');
-
 
 
 class StartMatch extends Operation {
@@ -16,7 +14,16 @@ class StartMatch extends Operation {
     try {
       const io = socketio(server);
       io.on('connection', (socket) => {
-        socket.emit('qwerty', {hello: 'qwerty socket'});
+        socket.emit('player1', { hello: 'player1 socket' });
+        socket.emit('player2', { hello: 'player2 socket' });
+
+        socket.on('player1', (data) => {
+          io.sockets.emit('player2', data);
+        });
+
+        socket.on('player2', (data) => {
+          io.sockets.emit('player1', data);
+        });
       });
 
       return this.emit(SUCCESS, 'OK');

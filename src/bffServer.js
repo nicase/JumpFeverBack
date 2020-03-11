@@ -1,16 +1,10 @@
+/* eslint-disable max-len */
 const { createServer } = require('http'); // TOCHECK
-const container = require('./di/container');
-const HttpServer = require('./ui/HttpServer');
-// eslint-disable-next-line import/order
-const socketio = require('socket.io');
 const {
-  createContainer,
-  InjectionMode,
-  Lifetime,
-  asClass,
-  asFunction,
   asValue,
 } = require('awilix');
+const container = require('./di/container');
+const HttpServer = require('./ui/HttpServer');
 
 
 // Setup the infrastructure
@@ -54,7 +48,7 @@ httpServer
       socket.on('player2', (data) => {
         socket.emit('player1', data);
       });
-    });*/
+    }); */
   })
   .catch((err) => {
     logger.error(`Application error: ${err}`);
