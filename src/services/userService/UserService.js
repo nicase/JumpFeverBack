@@ -57,6 +57,25 @@ class UserService {
   delete(userId) {
     return this.userRepository.delete(userId);
   }
+
+  async winner(userId) {
+    const user = await this.userRepository.get(userId);
+    console.log(user);
+    user.XP += 5;
+    this.userRepository.update(userId, user);
+  }
+
+  async loser(userId) {
+    const user = await this.userRepository.get(userId);
+    console.log(user);
+    if (user.XP >= 5) {
+      user.XP -= 5;
+      this.userRepository.update(userId, user);
+    } else {
+      user.XP = 0;
+      this.userRepository.update(userId, user);
+    }
+  }
 }
 
 module.exports = UserService;

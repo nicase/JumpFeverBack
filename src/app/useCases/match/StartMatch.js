@@ -8,7 +8,7 @@ class StartMatch extends Operation {
     this.matchService = matchService;
   }
 
-  async execute(server) {
+  async execute(matchdata, server) {
     const { SUCCESS, ERROR, NOT_FOUND } = this.outputs;
 
     try {

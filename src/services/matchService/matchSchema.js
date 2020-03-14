@@ -9,11 +9,12 @@ module.exports = new Schema({
   user2: {
     type: Schema.Types.ObjectId,
     ref: 'User',
-    required: true,
+    default: null,
   },
   winner: {
     type: Schema.Types.ObjectId,
     ref: 'User',
+    default: null,
   },
 }, {
   timestamps: true,

@@ -6,11 +6,13 @@ const updateMatch = require('./endpoints/updateMatch');
 const deleteMatch = require('./endpoints/deleteMatch');
 const getMatch = require('./endpoints/getMatch');
 const startMatch = require('./endpoints/startMatch');
+const endMatch = require('./endpoints/endMatch');
 
 
 const matchRouter = Router();
 
-matchRouter.get('/startMatch', startMatch);
+matchRouter.post('/startMatch', startMatch);
+matchRouter.post('/endMatch', endMatch);
 
 // Authenticated
 matchRouter.get('/', getAllMatchs);

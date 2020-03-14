@@ -7,11 +7,6 @@ class MatchService {
   }
 
   async create(matchData) {
-    const matchEntity = await this.MatchRepository.getOne({ name: matchData.name });
-    if (matchEntity) {
-      throw new Error('DuplicatedMatchError');
-    }
-
     const newMatchEntity = new MatchEntity(matchData);
     return this.MatchRepository.create(newMatchEntity);
   }
