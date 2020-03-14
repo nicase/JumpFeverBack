@@ -17,10 +17,10 @@ const router = Router();
 router.use('/api', apiRouter);
 router.use('/status', (req, res) => res.status(Status.OK).json({ status: 'OK' }));
 
-router.use(express.static(path.join(__dirname, '../../../static')));
+router.use(express.static(path.resolve(path.join(__dirname, '../../static'))));
 
 router.get('/', (req, res) => {
-  res.sendFile(path.resolve(path.join(__dirname, '../../../static/html/login.html')));
+  res.sendFile(path.resolve(path.join(__dirname, '../../static/html/login.html')));
 });
 
 
