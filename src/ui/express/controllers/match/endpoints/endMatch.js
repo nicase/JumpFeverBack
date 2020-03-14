@@ -12,13 +12,12 @@ module.exports = [
   ],
   checkBadRequestErrors,
   (req, res, next) => {
-    const startMatch = req.container.resolve('StartMatch');
-    const server = req.container.resolve('server');
+    const endMatch = req.container.resolve('EndMatch');
     const {
       SUCCESS, ERROR, NOT_FOUND,
-    } = startMatch.outputs;
+    } = endMatch.outputs;
 
-    startMatch
+    endMatch
       .on(SUCCESS, (match) => {
         res.status(Status.OK).json(match);
       })
@@ -32,6 +31,6 @@ module.exports = [
         next(err);
       });
 
-    return startMatch.execute(req.body, server);
+    return endMatch.execute(req.user.id, req.body);
   },
 ];
