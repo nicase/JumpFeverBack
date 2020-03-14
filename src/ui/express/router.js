@@ -14,8 +14,13 @@ apiRouter.use('/match', MatchController);
 const router = Router();
 router.use('/api', apiRouter);
 router.use('/status', (req, res) => res.status(Status.OK).json({ status: 'OK' }));
+
+const express = require('express');
+const path = require('path')
+router.use(express.static(__dirname + '../../../static'))
+
 router.get('/', (req, res) => {
-  res.sendFile('/Users/pauescofet/Desktop/Pau/Projectes/JumpFever/Backend/src/static/test.html');
+  res.sendFile(path.resolve(__dirname + '../../../static/html/login.html'));
 });
 
 
