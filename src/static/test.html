@@ -1,0 +1,28 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!-- Socket.io Library-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+
+<script>
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    var socket = io('http://localhost:5000');
+    socket.on('player' + vars[0], function (data) {
+        console.log(data);
+    });
+</script>
+
+<script>
+    function emitPosition() {
+        socket.emit('player' + vars[0], vars[1]);
+    }
+</script>
+
+<button onclick="emitPosition()">Click me</button>

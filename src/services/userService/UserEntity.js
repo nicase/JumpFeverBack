@@ -34,7 +34,7 @@ class UserEntity {
   }
 
   isAdmin() {
-    return this._role === 'admin';
+    return this.role === 'admin';
   }
 }
 

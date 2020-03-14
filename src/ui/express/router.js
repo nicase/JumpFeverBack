@@ -15,7 +15,7 @@ const router = Router();
 router.use('/api', apiRouter);
 router.use('/status', (req, res) => res.status(Status.OK).json({ status: 'OK' }));
 router.get('/', (req, res) => {
-  res.sendFile('/Users/pauescofet/Desktop/Pau/Projectes/JumpFever/Backend/src/static/index.html');
+  res.sendFile('/Users/pauescofet/Desktop/Pau/Projectes/JumpFever/Backend/src/static/test.html');
 });
 
 

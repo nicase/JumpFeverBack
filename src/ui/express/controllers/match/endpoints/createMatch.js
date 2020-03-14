@@ -1,16 +1,11 @@
 const Status = require('http-status');
-const { body } = require('express-validator');
 
 const {
-  checkBadRequestErrors, checkUserAuthenticated, userIsAdmin,
+  checkBadRequestErrors, checkUserAuthenticated,
 } = require('../../../middlewares');
 
 module.exports = [
   checkUserAuthenticated,
-  userIsAdmin,
-  [
-    body('name').isString().not().isEmpty(),
-  ],
   checkBadRequestErrors,
   (req, res, next) => {
     const createMatch = req.container.resolve('CreateMatch');
