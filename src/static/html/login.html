@@ -1,9 +1,62 @@
 <head>
     <link rel="stylesheet" href="/css/styles.css">
 </head>
-<p>Hello World!</p>
-<form action="/api/auth/login" method="POST">
-    <input type="email" name="email" placeholder="Email">
-    <input type="password" name="password" placeholder="Password">
-    <input type="button" value="Login">
+<p id="hello">Hello World!</p>
+<form onsubmit="try_login(); return false">
+    <input id="usernameInput" type="text" placeholder="username">
+    <input id="passwordInput" type="password" placeholder="Password">
+    <input id="submit" type="submit" value="Login">
 </form>
+
+<script>
+    var username;
+    var password;
+
+    function error() {
+        document.getElementById("hello").innerHTML = "Something went wrong!";
+    }
+
+    function save_data(resp) {
+        try {
+            resp = JSON.parse(resp);
+        }
+        catch (err) {
+            error()
+        }
+
+        // Login correcte
+        if (resp.token) {
+            localStorage.setItem('token', resp.token);
+            localStorage.setItem('username', username);
+            // Redirect
+            window.location.replace("/dashboard");
+        }
+        // Login incorrecte
+        else {
+            error()
+        }
+    }
+
+    function try_login() {
+
+        var req = new XMLHttpRequest();   // new HttpRequest instance
+        var theUrl = "/api/auth/login";
+        req.open("POST", theUrl);
+        req.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        req.onreadystatechange = () => {
+            if (req.readyState == XMLHttpRequest.DONE) {
+                save_data(req.responseText)
+            }
+        };
+
+        username = document.getElementById("usernameInput").value;
+        password = document.getElementById("passwordInput").value;
+
+        var load = {
+            "username": username,
+            "password": password
+        }
+
+        req.send(JSON.stringify(load));
+    }
+</script>

@@ -23,5 +23,9 @@ router.get('/', (req, res) => {
   res.sendFile(path.resolve(path.join(__dirname, '../../static/html/login.html')));
 });
 
+router.get('/dashboard', (req, res) => {
+  res.sendFile(path.resolve(path.join(__dirname, '../../static/html/dashboard.html')));
+});
+
 
 module.exports = router;
