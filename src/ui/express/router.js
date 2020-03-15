@@ -28,4 +28,8 @@ router.get('/dashboard', (req, res) => {
 });
 
 
+router.get('/game', (req, res) => {
+  res.sendFile(path.resolve(path.join(__dirname, '../../static/html/game.html')));
+});
+
 module.exports = router;

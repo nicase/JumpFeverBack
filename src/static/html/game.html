@@ -1,0 +1,35 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <title>Jump fever</title>
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="left">
+            <h1 class="titol">Jump Fever</h1>
+            <div class="username">
+                <!-- Username: Pringao -->
+            </div>
+        </div>
+        <canvas id="mycanvas" width="500" height="100%"></canvas>
+        <script src="/js/data.js"></script>
+        <script src="/js/draw.js"></script>
+        <script src="/js/platform.js"></script>
+        <script src="/js/player.js"></script>
+        <script src="/js/game.js"></script>
+
+        <div id="right">
+            <!-- tbyt -->
+        </div>
+        <script>
+            function updatePanelColor() {
+                let lvl = g.currentLevel
+                document.getElementById("right").style.backgroundColor = "#" + dataColors[lvl].toString(16)
+                document.getElementById("left").style.backgroundColor = "#" + dataColors[lvl].toString(16)
+            }
+
+        </script>
+
+    </div>
+
+</body>
