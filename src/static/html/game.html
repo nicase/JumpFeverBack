@@ -1,4 +1,6 @@
 <head>
+    <!-- Socket.io Library-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
     <title>Jump fever</title>
 </head>
@@ -41,9 +43,11 @@
             });
 
             function emitPosition(x, y) {
-                socket.emit('player' + vars[0], { 'x': x, 'y': y });
+                socket.emit('player' + vars[0], {
+                    'x': x,
+                    'y': y
+                });
             }
-
         </script>
 
     </div>
