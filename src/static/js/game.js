@@ -86,6 +86,12 @@ class Game {
         d.clearAll()
         d.backbroung("#000000")
         let minY = d.height;
+
+        for (let i = 0; i < this.players.length; ++i) {
+            let p = this.players[i]
+            p.update_other()
+        }
+
         for (let i = 0; i < this.players.length; ++i) {
             minY = Math.min(minY, this.players[i].posY);
         }
@@ -104,10 +110,6 @@ class Game {
         this.checkCollisions()
         this.me.update()
 
-        for (let i = 0; i < this.players.length; ++i) {
-            let p = this.players[i]
-            p.update_other()
-        }
 
         // Check if player is dead
         if (this.me.posY >= d.height + 100) {
@@ -216,7 +218,7 @@ const cnv = document.getElementById("mycanvas")
 cnv.height = document.documentElement.clientHeight - 50;
 
 const d = new drawTool("mycanvas")
-const g = new Game(Math.random()*9999, [1,2,3,4])
+const g = new Game(Math.random()*9999, [1])
 g.start()
 var updateAll = () => g.update()
 
