@@ -2,6 +2,7 @@ const Status = require('http-status');
 const { Router } = require('express');
 const express = require('express');
 const path = require('path');
+const cookieParser = require('cookie-parser');
 
 const UserController = require('./controllers/user');
 const AuthController = require('./controllers/auth');
@@ -18,8 +19,7 @@ router.use('/api', apiRouter);
 router.use('/status', (req, res) => res.status(Status.OK).json({ status: 'OK' }));
 
 router.use(express.static(path.resolve(path.join(__dirname, '../../static'))));
-
-
+router.use(cookieParser());
 
 router.get('/', (req, res) => {
   res.sendFile(path.resolve(path.join(__dirname, '../../static/html/home.html')));
@@ -30,11 +30,16 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/dashboard', (req, res) => {
+  var token = req.cookies['token']
+  if (!token) res.redirect('/login')
+  else
   res.sendFile(path.resolve(path.join(__dirname, '../../static/html/dashboard.html')));
 });
 
-
 router.get('/game', (req, res) => {
+  var token = req.cookies['token']
+  if (!token) res.redirect('/login')
+  else
   res.sendFile(path.resolve(path.join(__dirname, '../../static/html/game.html')));
 });
 

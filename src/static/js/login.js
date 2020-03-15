@@ -27,6 +27,7 @@ function save_data(resp) {
     localStorage.setItem('token', resp.token);
     localStorage.setItem('username', username);
     // Redirect
+    document.cookie = "token=" + resp.token;
     window.location.replace("/dashboard");
   }
   // Login incorrecte
