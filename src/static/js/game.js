@@ -14,7 +14,7 @@ class Game {
 
         this.currentLevel = 0;
 
-        this.oneBlock = [ 
+        this.oneBlock = [
             // One block
             [[d.width/10, oneWidth]],
             [[2*d.width/10, oneWidth]],
@@ -24,17 +24,17 @@ class Game {
             [[6*d.width/10, oneWidth]],
             [[7*d.width/10, oneWidth]],
             [[8*d.width/10, oneWidth]],
-            [[9*d.width/10, oneWidth]] 
+            [[9*d.width/10, oneWidth]]
         ]
-        
-        this.twoBlock = [ 
+
+        this.twoBlock = [
             // Two blocks
             [[d.width/10, twoWidth], [9*d.width/10, twoWidth]],
             [[2*d.width/10, twoWidth], [8*d.width/10, twoWidth]],
             [[3*d.width/10, twoWidth], [7*d.width/10, twoWidth]],
             [[4*d.width/10, twoWidth], [6*d.width/10, twoWidth]],
             [[5*d.width/10, twoWidth], [5*d.width/10, twoWidth]],
-            
+
             [[d.width/10, twoWidth], [4*d.width/10, twoWidth]],
             [[2*d.width/10, twoWidth], [5*d.width/10, twoWidth]],
             [[3*d.width/10, twoWidth], [6*d.width/10, twoWidth]],
@@ -60,8 +60,8 @@ class Game {
             [[d.width/10, twoWidth], [8*d.width/10, twoWidth]],
             [[2*d.width/10, twoWidth], [9*d.width/10, twoWidth]]
         ]
-        
-        this.threeBlock = [ 
+
+        this.threeBlock = [
             // Three blocks
             [[d.width/10, threeWidth], [5*d.width/10, threeWidth], [9*d.width/10, threeWidth]],
             [[d.width/10, threeWidth], [4*d.width/10, threeWidth], [9*d.width/10, threeWidth]],
@@ -143,15 +143,15 @@ class Game {
             let randomVal = random(i * this.seed + 1)
 
             let nPlatforms = Math.floor(randomVal*3)
-            
+
             let type = []
             if (nPlatforms == 0) type = this.oneBlock
             else if (nPlatforms == 1) type = this.twoBlock
             else if (nPlatforms == 2) type = this.threeBlock
-            
+
             let index = Math.floor(type.length * random(i*2*this.seed))
             let level = type[index]
-            
+
             let decrease = 1 - 0.1*Math.floor(i/10)
             let blocks = []
             for (let x = 0; x < level.length; ++x) {
@@ -173,7 +173,7 @@ class Game {
                     current.update(this.platformsVel)
                 }
 
-                if (current.y >= 0 && current.y <= d.height + current.h) 
+                if (current.y >= 0 && current.y <= d.height + current.h)
                     current.show()
             }
         }
@@ -216,7 +216,7 @@ const cnv = document.getElementById("mycanvas")
 cnv.height = document.documentElement.clientHeight - 50;
 
 const d = new drawTool("mycanvas")
-const g = new Game(3247, [1,2,3,4])
+const g = new Game(Math.random()*9999, [1,2,3,4])
 g.start()
 var updateAll = () => g.update()
 

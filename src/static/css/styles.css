@@ -39,6 +39,7 @@ html,
   height: 100vh;
   /* justify-content: center; */
   align-items: center;
+  /* justify-content: center ; */
 }
 
 #left {
@@ -51,7 +52,7 @@ html,
 
 .titol {
   font-family: retroFont;
-  font-size: 40;
+  font-size: 60;
   color: black;
   margin-top: 10vh;
 }
@@ -70,4 +71,82 @@ html,
 #wrap {
   display: flex;
   flex-flow: row nowrap;
+}
+
+/* home */
+
+.dashboardRight {
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  height: 100vh;
+  /* justify-content: center; */
+  align-items: center;
+  background-color: #33717f;
+}
+
+.dashboardLeft {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: #33717f;
+}
+
+.dbTitol {
+  font-family: retroFont;
+  font-size: 70;
+  color: black;
+  margin-top: 10vh;
+}
+
+img {
+  height: 85%;
+  width: auto;
+}
+
+.slogan {
+  font-family: retroFont;
+  font-size: 20;
+  color: black;
+}
+
+.log {
+  margin-top: 25vh;
+}
+
+.button {
+  background-color: rgb(41, 38, 38);
+  border: none;
+  color: #33717f;
+  padding: 5% 10%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.in {
+  text-align: center;
+  margin-bottom: 5vh;
+}
+
+.bold {
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+}
+
+/* dashboard */
+
+.titlediv {
+  width: 100vw;
+  height: 40vh;
+  background-color: brown;
+  font-family: retroFont;
 }

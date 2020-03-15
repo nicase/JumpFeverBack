@@ -19,7 +19,13 @@ router.use('/status', (req, res) => res.status(Status.OK).json({ status: 'OK' })
 
 router.use(express.static(path.resolve(path.join(__dirname, '../../static'))));
 
+
+
 router.get('/', (req, res) => {
+  res.sendFile(path.resolve(path.join(__dirname, '../../static/html/home.html')));
+});
+
+router.get('/login', (req, res) => {
   res.sendFile(path.resolve(path.join(__dirname, '../../static/html/login.html')));
 });
 
@@ -30,6 +36,14 @@ router.get('/dashboard', (req, res) => {
 
 router.get('/game', (req, res) => {
   res.sendFile(path.resolve(path.join(__dirname, '../../static/html/game.html')));
+});
+
+router.get('/signup', (req, res) => {
+  res.send("Sign up :)");
+});
+
+router.get('/*', (req, res) => {
+  res.redirect('/');
 });
 
 module.exports = router;
