@@ -20,7 +20,6 @@ router.use('/status', (req, res) => res.status(Status.OK).json({ status: 'OK' })
 router.use(express.static(path.resolve(path.join(__dirname, '../../static'))));
 
 
-
 router.get('/', (req, res) => {
   res.sendFile(path.resolve(path.join(__dirname, '../../static/html/home.html')));
 });
@@ -39,7 +38,7 @@ router.get('/game', (req, res) => {
 });
 
 router.get('/signup', (req, res) => {
-  res.send("Sign up :)");
+  res.send('Sign up :)');
 });
 
 router.get('/*', (req, res) => {

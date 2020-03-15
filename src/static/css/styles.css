@@ -5,6 +5,7 @@
     Arial, sans-serif;
   line-height: 1.5;
 }
+
 @font-face {
   font-family: retroFont;
   src: url(/fonts/RetroGaming.ttf);
@@ -95,6 +96,32 @@ html,
   background-color: #33717f;
 }
 
+.loginRight {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  height: 100vh;
+  /* justify-content: center; */
+  align-items: center;
+  background-color: #33717f;
+}
+
+.loginLeft {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  height: 100vh;
+  /* justify-content: center; */
+  align-items: center;
+  background-color: #33717f;
+}
+
+.verticalLine {
+  border-left: 8px solid black;
+  height: 50vh;
+  height: 100vh;
+}
+
 .dbTitol {
   font-family: retroFont;
   font-size: 70;
@@ -105,6 +132,11 @@ html,
 img {
   height: 85%;
   width: auto;
+}
+
+input {
+  width: auto;
+  margin: 5;
 }
 
 .slogan {
