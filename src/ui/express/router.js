@@ -19,6 +19,7 @@ router.use('/api', apiRouter);
 router.use('/status', (req, res) => res.status(Status.OK).json({ status: 'OK' }));
 
 router.use(express.static(path.resolve(path.join(__dirname, '../../static'))));
+
 router.use(cookieParser());
 
 router.get('/', (req, res) => {
@@ -30,21 +31,19 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/dashboard', (req, res) => {
-  var token = req.cookies['token']
-  if (!token) res.redirect('/login')
-  else
-  res.sendFile(path.resolve(path.join(__dirname, '../../static/html/dashboard.html')));
+  const { token } = req.cookies;
+  if (!token) res.redirect('/login');
+  else { res.sendFile(path.resolve(path.join(__dirname, '../../static/html/dashboard.html'))); }
 });
 
 router.get('/game', (req, res) => {
-  var token = req.cookies['token']
-  if (!token) res.redirect('/login')
-  else
-  res.sendFile(path.resolve(path.join(__dirname, '../../static/html/game.html')));
+  const { token } = req.cookies;
+  if (!token) res.redirect('/login');
+  else { res.sendFile(path.resolve(path.join(__dirname, '../../static/html/game.html'))); }
 });
 
 router.get('/signup', (req, res) => {
-  res.send("Sign up :)");
+  res.send('Sign up :)');
 });
 
 router.get('/*', (req, res) => {

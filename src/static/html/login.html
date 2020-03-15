@@ -1,11 +1,28 @@
 <head>
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <script src="/js/login.js"></script>
+    <title>Jump fever Login</title>
 </head>
-<p id="hello">Hello World!</p>
-<form onsubmit="try_login(); return false">
-    <input id="usernameInput" type="text" placeholder="username">
-    <input id="passwordInput" type="password" placeholder="Password">
-    <input id="submit" type="submit" value="Login">
-</form>
 
-<script src="/js/login.js"></script>
+<body>
+    <div id="wrap">
+        <div class="loginLeft">
+            <h1 class="dbTitol">Login</h1>
+            <form onsubmit="try_login(); return false">
+                <input id="usernameInput" type="text" placeholder="Username"> <br>
+                <input id="passwordInput" type="password" placeholder="Password"> <br>
+                <input id="submit" class="button" type="submit" value="Login"> <br>
+            </form>
+        </div>
+        <div class="verticalLine"></div>
+        <div class="loginRight">
+            <h1 class="dbTitol">Sign Up</h1>
+            <form onsubmit="try_login(); return false">
+                <input id="usernameInput" type="text" placeholder="Username"> <br>
+                <input id="emailInput" type="text" placeholder="Email"> <br>
+                <input id="passwordInput" type="password" placeholder="Password"> <br>
+                <input id="submit" class="button" type="submit" value="Sign Up"> <br>
+            </form>
+        </div>
+    </div>
+</body>
