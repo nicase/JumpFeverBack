@@ -3,7 +3,7 @@ class Player{
     constructor(x, y, id) {
 
         if (id) this.id = id;
-        
+
         this.w = 25;
         this.h = 25;
         this.anim = 0
@@ -11,7 +11,7 @@ class Player{
 
         this.posX = x;
         this.posY = y;
-        
+
         let canv = new drawTool("mycanvas")
         this.offset =  - this.h/2 + canv.height - 20;
         this.offset2 = this.h/2;
@@ -34,13 +34,13 @@ class Player{
 
         // Movement parameters
         this.speedX = 1.5;
-        this.speedY = 3; 
+        this.speedY = 3;
         this.gravity = 0.03;
-        
+
         // [0] baix [1] cap [2] dreta [3] esquerra
-        this.walls = [new Wall(this.rx, this.by, this.lx, this.by), new Wall(this.lx, this.ty, this.rx, this.ty), 
+        this.walls = [new Wall(this.rx, this.by, this.lx, this.by), new Wall(this.lx, this.ty, this.rx, this.ty),
                      new Wall(this.rx, this.ty, this.rx, this.by), new Wall(this.lx, this.by, this.lx, this.ty)]
-        
+
         //animations
         this.jumpAnimation = -1;
         this.jumpAnimationStep = 3;
@@ -50,10 +50,10 @@ class Player{
         this.topAnimationStep = 3;
         this.topDeform = 10;
     }
-    
+
     show() {
         const dt = new drawTool("mycanvas");
-        
+
         //Jump animation
         if (this.jumpAnimation >= 0) {
             //deform
@@ -74,7 +74,7 @@ class Player{
             }
             this.jumpAnimation++;
         }
-        
+
         //Top Collision animation
         else if (this.topAnimation >= 0) {
             if (this.topAnimation <= 1*this.topAnimationStep) dt.rectangle(this.posX, this.posY, this.w + 1*(this.topDeform/5), this.h - 1*(this.topDeform/5), {color: "#FFFFFF"})
@@ -106,7 +106,7 @@ class Player{
 
     jump() {
 
-        let bopLeftRight = (this.collisionRIGHT && this.collisionLEFT) || 
+        let bopLeftRight = (this.collisionRIGHT && this.collisionLEFT) ||
         (!this.collisionLEFT && !this.collisionRIGHT);
 
         if (this.isGrounded && bopLeftRight) {
@@ -131,9 +131,9 @@ class Player{
         // [0] baix [1] cap [2] dreta [3] esquerra
 
     isCollision(platform) {
-        
-        this.collisionLEFT = this.collisionRIGHT  = this.collisionTOP = this.isGrounded = false; 
-        let trobat = false; 
+
+        this.collisionLEFT = this.collisionRIGHT  = this.collisionTOP = this.isGrounded = false;
+        let trobat = false;
         for (let i = 0; i < this.walls.length; ++i) {
             if (platform.isInside(this.walls[i])) {
                 trobat = true;
@@ -142,12 +142,12 @@ class Player{
                 if (i == 0) {
                     this.isGrounded = true;
                     //console.log(this.lastCollision)
-                } 
+                }
                 else if (i == 1) {
                     this.collisionTOP = true;
                     this.jumpAnimation = -1; //parem l'animació de salt
                     this.topAnimation = 0; //comencem l'animacio de colisió
-                } 
+                }
                 else if (i == 2) this.collisionRIGHT = true;
                 else if (i == 3) this.collisionLEFT = true;
 
@@ -166,9 +166,9 @@ class Player{
         // [0] baix [1] cap [2] dreta [3] esquerra
         let ofs = 2
         this.walls = [
-            new Wall(this.rx - ofs, this.by, this.lx + ofs, this.by), 
-            new Wall(this.lx + ofs, this.ty, this.rx - ofs, this.ty), 
-            new Wall(this.rx, this.ty + ofs, this.rx, this.by - ofs), 
+            new Wall(this.rx - ofs, this.by, this.lx + ofs, this.by),
+            new Wall(this.lx + ofs, this.ty, this.rx - ofs, this.ty),
+            new Wall(this.rx, this.ty + ofs, this.rx, this.by - ofs),
             new Wall(this.lx, this.by - ofs, this.lx, this.ty + ofs)
         ]
     }
@@ -246,17 +246,17 @@ class Player{
             this.posX = this.platformCollision.x1 + this.w/2 + 1;
         }
 
-        let leftRight = (this.collisionRIGHT && this.collisionLEFT) || 
+        let leftRight = (this.collisionRIGHT && this.collisionLEFT) ||
         (!this.collisionLEFT && !this.collisionRIGHT);
 
         if (this.collisionTOP && leftRight) {
             this.velY = 0;
             this.posY = this.platformCollision.y1 + this.h/2 + 3;
         }
-        
+
         this.posX += this.velX;
         this.posY += this.velY;
-        
+
         // Mirem limits parets
         if (this.posX - this.w/2 <= 0) {
             this.posX = this.w/2 + 1; // posem 1 de offset per assegurar-nos que va bé
@@ -269,7 +269,7 @@ class Player{
             this.velX = 0;
             this.accX = 0;
         }
-        
+
         this.updateWalls()
 
         // Draw walls
@@ -279,18 +279,23 @@ class Player{
 
         if (!this.isGrounded) {
             this.velY += this.gravity;
-        } 
+        }
 
         if (this.isGrounded && leftRight) {
             this.posY = this.platformCollision.y2 - this.h/2
             this.velY = 0
         }
         this.show();
-        
+        this.sendInfo();
     }
-
+    sendInfo() {
+        emitPosition(this.posX, this.posY);
+    }
     update_other() {
         //demano pos a pau i faig show
+        this.posX = xOther;
+        this.posY = yOther;
+        this.show();
     }
 
     kill() {
