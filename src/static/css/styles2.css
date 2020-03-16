@@ -201,7 +201,7 @@ img {
   margin-right: auto;
   height: 23%;
   width: 55%;
-  margin-top: 15%;
+  margin-top: 12%;
   border-radius: 5px;
   /* border-color: black; */
   border-style: solid;
@@ -209,7 +209,7 @@ img {
 
 .solo {
   width: 55%;
-  height: 23%;
+  height: 20%;
   background-color: F7CB50;
   margin-left: ;
   margin-right: auto;
@@ -222,7 +222,7 @@ img {
 
 .joinGame {
   width: 55%;
-  height: 23%;
+  height: 20%;
   background-color: #f7cb50;
   margin-left: ;
   margin-right: auto;
@@ -237,12 +237,20 @@ img {
   background-color: #4f7bf7;
   border: none;
   color: #f7cb50;
-  padding: 5% 10%;
+  padding: 2% 10%;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  border-radius: 3px;
+  border-radius: 2px;
+  border-style: solid;
+  border-width: 2;
+  border-color: black;
+}
+
+.button2:hover {
+  background-color: #3f62c4;
+  color: #f7cb50;
 }
