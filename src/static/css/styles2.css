@@ -1,246 +1,239 @@
 * {
-    color: #333;
-    font-size: 1rem;
-    font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.5
+  color: #333;
+  font-size: 1rem;
+  font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica,
+    Arial, sans-serif;
+  line-height: 1.5;
 }
 @font-face {
-    font-family: retroFont;
-    src: url(Retro\ Gaming.ttf);
+  font-family: retroFont;
+  src: url(/fonts/RetroGaming.ttf);
 }
 
 body,
 html,
 #wrap {
-    margin: 0px;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 #ranking {
-    width: 3.7rem;
-    height: 3.7rem;
+  width: 3.7rem;
+  height: 3.7rem;
 }
 
 #playButton {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0.5rem;
-    margin-bottom: auto
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.5rem;
+  margin-bottom: auto;
 }
 
 #left,
 #right {
-    display: flex;
-    flex-direction: column;
-    width: calc((100vw - 56.25vh)/2);
-    height: 100vh;
-    /* justify-content: center; */
-    align-items: center;
-    /* justify-content: center ; */
-    
+  display: flex;
+  flex-direction: column;
+  width: calc((100vw - 56.25vh) / 2);
+  height: 100vh;
+  /* justify-content: center; */
+  align-items: center;
+  /* justify-content: center ; */
 }
 
 #left {
-    /* background: #cfcfcf */
+  /* background: #cfcfcf */
 }
 
 #right {
-    /* background: #cfcfcf; */
-    
+  /* background: #cfcfcf; */
 }
 
 .titol {
-    /* margin-left: 50vw; */
-    font-family: retroFont;
-    font-size: 60;
-    color: black;
-    margin-top: 10vh;
-    
+  /* margin-left: 50vw; */
+  font-family: retroFont;
+  font-size: 60;
+  color: black;
+  margin-top: 10vh;
 }
 
 .username {
-    margin-top: 30vh;
-    font-weight: bold;
-    color: black;
+  margin-top: 30vh;
+  font-weight: bold;
+  color: black;
 }
 
 #mainCanvas {
-    height: 100vh;
-    width: 56.25vh
+  height: 100vh;
+  width: 56.25vh;
 }
 
 #wrap {
-    display: flex;
-    flex-flow: row nowrap;
+  display: flex;
+  flex-flow: row nowrap;
 }
 
 /* home */
 
 .dashboardRight {
-    display: flex;
-    flex-direction: column;
-    width: 60vw;
-    height: 100vh;
-    /* justify-content: center; */
-    align-items: center;
-    background-color: #33717F;
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  height: 100vh;
+  /* justify-content: center; */
+  align-items: center;
+  background-color: #33717f;
 }
 
 .dashboardLeft {
-    display: flex;
-    flex-direction: column;
-    width: 40vw;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    background-color: #33717F;
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: #33717f;
 }
 
 .dbTitol {
-    font-family: retroFont;
-    font-size: 70;
-    color: black;
-    margin-top: 10vh;
-    
+  font-family: retroFont;
+  font-size: 70;
+  color: black;
+  margin-top: 10vh;
 }
 
 img {
-    height: 85%;
-    width: auto;
+  height: 85%;
+  width: auto;
 }
 
 .slogan {
-    font-family: retroFont;
-    font-size: 20;
-    color: black;
+  font-family: retroFont;
+  font-size: 20;
+  color: black;
 }
 
 .log {
-    margin-top: 25vh;
+  margin-top: 25vh;
 }
 
 .button {
-    background-color: rgb(41, 38, 38);
-    border: none;
-    color: #33717F;
-    padding: 5% 10%;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 3px;
-  }
+  background-color: rgb(41, 38, 38);
+  border: none;
+  color: #33717f;
+  padding: 5% 10%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 3px;
+}
 
 .in {
-    text-align: center;
-    margin-bottom: 5vh;
+  text-align: center;
+  margin-bottom: 5vh;
 }
 
 .bold {
-    font-size: 16px;
-    font-weight: bold;
-    color: black;
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
 }
 
 /* dashboard */
 
 .tittlediv {
-    width: 100vw;
-    height: 30vh;
-    background-color: #F7CB50;
-    font-family: retroFont;
-    font-size: 40;
-    text-align: center;
-    overflow: hidden;
-
+  width: 100vw;
+  height: 30vh;
+  background-color: #f7cb50;
+  font-family: retroFont;
+  font-size: 40;
+  text-align: center;
+  overflow: hidden;
 }
 
 .filldiv {
-    width: 100vw;
-    height: 60vh;
-    /* background-color: cadetblue; */
+  width: 100vw;
+  height: 60vh;
+  /* background-color: cadetblue; */
 }
 
 .fillLeft {
-    background-color: cornflowerblue;
-    width: 50vw;
-    /* height: 40vh; */
+  background-color: cornflowerblue;
+  width: 50vw;
+  /* height: 40vh; */
 }
 
-.fillRight ´{
-    background-color: goldenrod;
-    width: 50vw;
-    /* height: 40vh; */
-
+.fillRight ´ {
+  background-color: goldenrod;
+  width: 50vw;
+  /* height: 40vh; */
 }
 
 .content1 {
-    background-color: #F7CB50;
-    font-size: 30;
-    height: 100%;
+  background-color: #f7cb50;
+  font-size: 30;
+  height: 100%;
 }
 .content2 {
-    background-color: #F7CB50;
-    font-size: 30;
-    height: 100%;
+  background-color: #f7cb50;
+  font-size: 30;
+  height: 100%;
 }
 
 .createGame {
-    font-size: 30;
-    font-weight: bold;
-    background-color: #F7CB50;
-    margin-left: auto;
-    margin-right: auto;
-    height:23%;
-    width: 55%;
-    margin-top: 15%;
-    border-radius: 5px;
-    /* border-color: black; */
-    border-style: solid;
+  font-size: 30;
+  font-weight: bold;
+  background-color: #f7cb50;
+  margin-left: auto;
+  margin-right: auto;
+  height: 23%;
+  width: 55%;
+  margin-top: 15%;
+  border-radius: 5px;
+  /* border-color: black; */
+  border-style: solid;
 }
 
 .solo {
-    width: 55%;
-    height: 23%;
-    background-color: F7CB50;
-    margin-left: ;
-    margin-right: auto;
-    font-size: 30;
-    font-weight: bold;
-    margin-top: 0%;
-    border-radius: 5px;
-    border-style: solid;
+  width: 55%;
+  height: 23%;
+  background-color: F7CB50;
+  margin-left: ;
+  margin-right: auto;
+  font-size: 30;
+  font-weight: bold;
+  margin-top: 0%;
+  border-radius: 5px;
+  border-style: solid;
 }
 
 .joinGame {
-    width: 55%;
-    height: 23%;
-    background-color: #F7CB50;
-    margin-left: ;
-    margin-right: auto;
-    font-size: 30;
-    font-weight: bold;
-    margin-top: 5%;
-    border-radius: 5px;
-    border-style: solid;
-
-    
+  width: 55%;
+  height: 23%;
+  background-color: #f7cb50;
+  margin-left: ;
+  margin-right: auto;
+  font-size: 30;
+  font-weight: bold;
+  margin-top: 5%;
+  border-radius: 5px;
+  border-style: solid;
 }
 
 .button2 {
-    background-color: #4f7bf7;
-    border: none;
-    color: #F7CB50;
-    padding: 5% 10%;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 3px;
-  }
+  background-color: #4f7bf7;
+  border: none;
+  color: #f7cb50;
+  padding: 5% 10%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 3px;
+}
