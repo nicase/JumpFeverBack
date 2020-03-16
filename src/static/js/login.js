@@ -11,7 +11,7 @@ function post(url, load, callback) {
 }
 
 function error() {
-  document.getElementById("hello").innerHTML = "Something went wrong!";
+  console.log("Something went wrong!");
 }
 
 function save_data(resp) {

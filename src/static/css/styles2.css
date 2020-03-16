@@ -58,6 +58,15 @@ html,
   margin-top: 10vh;
 }
 
+.titolGame {
+  /* margin-left: 50vw; */
+  font-family: retroFont;
+  font-size: 50;
+  color: black;
+  margin-top: 10vh;
+  text-align: center;
+}
+
 .username {
   margin-top: 30vh;
   font-weight: bold;
