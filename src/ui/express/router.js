@@ -42,6 +42,14 @@ router.get('/game', (req, res) => {
   else { res.sendFile(path.resolve(path.join(__dirname, '../../static/html/game.html'))); }
 });
 
+
+router.get('/createGame', (req, res) => {
+  const { token } = req.cookies;
+  if (!token) res.redirect('/login');
+  else { res.sendFile(path.resolve(path.join(__dirname, '../../static/html/createGame.html'))); }
+});
+
+
 router.get('/signup', (req, res) => {
   res.send('Sign up :)');
 });

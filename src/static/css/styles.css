@@ -41,17 +41,35 @@ html,
   /* justify-content: center; */
   align-items: center;
   /* justify-content: center ; */
+  overflow: hidden;
+
 }
 
 #left {
   /* background: #cfcfcf */
 }
 
-#right {
-  /* background: #cfcfcf; */
+#wait {
+  font-family: retroFont;
+  font-size: 20;
+  padding-left: 20%;
+  padding-right: 20%;
+
 }
 
+#right {
+  /* background: #cfcfcf; */
+  padding-top: 15%;
+}
+
+
 .titol {
+  font-family: retroFont;
+  font-size: 60;
+  color: black;
+  margin-top: 10vh;
+}
+.titolGame {
   font-family: retroFont;
   font-size: 60;
   color: black;

@@ -1,0 +1,62 @@
+<head>
+    <!-- Socket.io Library-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <title>Jump fever</title>
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="left">
+            <h1 class="titolGame">Jump Fever</h1>
+            <div class="username">
+                <!-- Username: Pringao -->
+            </div>
+        </div>
+        <canvas id="mycanvas" width="500" height="500"></canvas>
+        <script src="/js/data.js"></script>
+        <script src="/js/draw.js"></script>
+        <script src="/js/platform.js"></script>
+        <script src="/js/player.js"></script>
+        <script src="/js/game.js"></script>
+
+        <div id="right" class="text-center mx-2">
+            <!-- tbyt -->
+            <p id="wait">
+
+                While we wait your friend to connect, practice your skills!
+                <br><br><br>
+                Code: 1234tonto
+
+            </p>
+        </div>
+        <script>
+            function updatePanelColor() {
+                let lvl = g.currentLevel
+                document.getElementById("right").style.backgroundColor = "#" +
+                    dataColors[lvl].toString(16)
+                document.getElementById("left").style.backgroundColor = "#" +
+                    dataColors[lvl].toString(16)
+            }
+
+            var xOther, yOther;
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            var socket = io('http://localhost:5000');
+            socket.on('player' + vars[0], function (data) {
+                xOther = data.x;
+                yOther = data.y;
+                console.log(data)
+            });
+
+            function emitPosition(x, y) {
+                socket.emit('player' + vars[0], {
+                    'x': x,
+                    'y': y
+                });
+            }
+        </script>
+
+    </div>
+
+</body>

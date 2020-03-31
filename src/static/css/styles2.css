@@ -14,9 +14,18 @@ body,
 html,
 #wrap {
   margin: 0px;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+  /* //overflow: hidden; */
+
+}
+
+#code {
+  height: 50px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  width: 80%;
+  color: white;
+  background-color: black;
+  border-color: black;
 }
 
 #ranking {
@@ -82,6 +91,12 @@ html,
   display: flex;
   flex-flow: row nowrap;
 }
+
+.wrapper {
+  height: 100vh;
+  width: 100vw;
+}
+
 
 /* home */
 
@@ -194,6 +209,8 @@ img {
 }
 
 .createGame {
+  font-family: retroFont;
+  src: url(/fonts/RetroGaming.ttf);
   font-size: 30;
   font-weight: bold;
   background-color: #f7cb50;
@@ -209,6 +226,8 @@ img {
 }
 
 .solo {
+  font-family: retroFont;
+  src: url(/fonts/RetroGaming.ttf);
   width: 55%;
   /* height: 20%; */
 
@@ -221,9 +240,14 @@ img {
   margin-top: 0%;
   border-radius: 5px;
   border-style: solid;
+
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .joinGame {
+  font-family: retroFont;
+  src: url(/fonts/RetroGaming.ttf);
   width: 55%;
   /* height: 20%; */
 
@@ -236,6 +260,9 @@ img {
   margin-top: 5%;
   border-radius: 5px;
   border-style: solid;
+
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .button2 {
