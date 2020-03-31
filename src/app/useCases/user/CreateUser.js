@@ -9,7 +9,7 @@ class CreateUser extends Operation {
 
   async execute(userData) {
     const {
-      SUCCESS, ERROR, ALREADY_REGISTERED, BAD_EMAIL, BAD_PASSWORD,
+      SUCCESS, ERROR, ALREADY_REGISTERED, BAD_EMAIL, BAD_PASSWORD, DUPLICATED_USERNAME,
     } = this.outputs;
     let user;
 
@@ -25,6 +25,9 @@ class CreateUser extends Operation {
       if (error.message === 'BadEmailError') {
         return this.emit(BAD_EMAIL, error);
       }
+      if (error.message === 'DuplicatedUsername') {
+        return this.emit(DUPLICATED_USERNAME, error);
+      }
       if (error.message === 'BadPasswordError') {
         await this.userService.delete(user.id);
         return this.emit(BAD_PASSWORD, error);
@@ -35,7 +38,7 @@ class CreateUser extends Operation {
 }
 
 CreateUser.setOutputs(
-  ['SUCCESS', 'ERROR', 'ALREADY_REGISTERED', 'BAD_EMAIL', 'BAD_PASSWORD'],
+  ['SUCCESS', 'ERROR', 'ALREADY_REGISTERED', 'BAD_EMAIL', 'BAD_PASSWORD', 'DUPLICATED_USERNAME'],
 );
 
 module.exports = CreateUser;

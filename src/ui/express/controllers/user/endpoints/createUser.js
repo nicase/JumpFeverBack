@@ -18,7 +18,7 @@ module.exports = [
   (req, res, next) => {
     const createUser = req.container.resolve('CreateUser');
     const {
-      SUCCESS, ERROR, ALREADY_REGISTERED, BAD_EMAIL, BAD_PASSWORD,
+      SUCCESS, ERROR, ALREADY_REGISTERED, BAD_EMAIL, BAD_PASSWORD, DUPLICATED_USERNAME,
     } = createUser.outputs;
 
     createUser
@@ -41,6 +41,12 @@ module.exports = [
         res.status(Status.NOT_FOUND).json({
           type: error.message,
           message: 'Email does not identify any user',
+        });
+      })
+      .on(DUPLICATED_USERNAME, (error) => {
+        res.status(Status.NOT_FOUND).json({
+          type: error.message,
+          message: 'Username already in database',
         });
       })
       .on(ERROR, (err) => {
