@@ -1,7 +1,9 @@
 function post(url, load, callback) {
   var req = new XMLHttpRequest();   // new HttpRequest instance
   req.open("POST", url);
-  req.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  req.setRequestHeader("Content-Type", "application/json");
+  let tokenHeader = 'Bearer ' + localStorage.getItem('token');
+  req.setRequestHeader('Authorization', tokenHeader);
   req.onreadystatechange = () => {
     if (req.readyState == XMLHttpRequest.DONE) {
       callback(req.responseText)
@@ -21,18 +23,17 @@ function callback(resp) {
   catch (err) {
     error()
   }
-
   localStorage.setItem('matchId', resp._id);
   window.location.replace("/match/" + resp._id);
 
 }
 
-async function new_game() {
-
+function new_game() {
+  const user1 = localStorage.getItem('userId');
   var load = {
-    "id": await localStorage.getItem('id')
+    user1
   }
 
-  post("/api/auth/startMatch", load, callback)
+  post("/api/match", load, callback)
 
 }

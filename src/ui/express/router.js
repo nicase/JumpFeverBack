@@ -46,8 +46,8 @@ router.get('/signup', (req, res) => {
   res.send('Sign up :)');
 });
 
-router.get('/*', (req, res) => {
-  res.redirect('/');
-});
+// router.get('/*', (req, res) => {
+//   res.redirect('/');
+// });
 
 module.exports = router;
