@@ -14,7 +14,7 @@ function error() {
   console.log('Something went wrong!');
 }
 
-function save_data(resp) {
+function save_data_login(resp) {
   try {
     resp = JSON.parse(resp);
   } catch (err) {
@@ -31,26 +31,52 @@ function save_data(resp) {
   }
   // Login incorrecte
   else {
+    console.log(resp);
+    document.getElementById('loginError').innerHTML = resp;
+    error();
+  }
+}
+
+function save_data_signup(resp) {
+  try {
+    resp = JSON.parse(resp);
+  } catch (err) {
+    error();
+  }
+  // Sign Up correcte
+  if (resp.username) {
+    document.getElementById('signupSuccess').innerHTML = 'Successfully Signed Up, Please Log In';
+  }
+  // Sign Up incorrecte
+  else {
+    console.log(resp);
+    let errorLabel = '';
+    if (resp.errors) {
+      for (const err of resp.errors) {
+        errorLabel += `${err.msg}: ${err.param} <br>`;
+      }
+    } else errorLabel = resp.message;
+    document.getElementById('signupError').innerHTML = errorLabel;
     error();
   }
 }
 
 function try_login() {
-  const username = document.getElementById('usernameInput').value;
-  const password = document.getElementById('passwordInput').value;
+  const username = document.getElementById('usernameLoginInput').value;
+  const password = document.getElementById('passwordLoginInput').value;
 
   const load = {
     username,
     password,
   };
 
-  post('/api/auth/login', load, save_data);
+  post('/api/auth/login', load, save_data_login);
 }
 
 function try_signup() {
-  const username = document.getElementById('usernameInput').value;
-  const email = document.getElementById('emailInput').value;
-  const password = document.getElementById('passwordInput').value;
+  const username = document.getElementById('usernameSignupInput').value;
+  const email = document.getElementById('emailSignupInput').value;
+  const password = document.getElementById('passwordSignupInput').value;
 
   const load = {
     username,
@@ -58,5 +84,5 @@ function try_signup() {
     password,
   };
 
-  post('/api/auth/signup', load, save_data);
+  post('/api/auth/signup', load, save_data_signup);
 }

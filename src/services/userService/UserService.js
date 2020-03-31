@@ -11,7 +11,7 @@ class UserService {
     if (userEntityEmail) throw new Error('DuplicateEmailError');
 
     const userEntityUsername = await this.userRepository.getOne({ username: userData.username });
-    if (userEntityUsername) throw new Error('DuplicateUsernameError');
+    if (userEntityUsername) throw new Error('DuplicatedUsername');
 
     const newUserEntity = new UserEntity(Object.assign(userData, { role: 'client' }));
     return this.userRepository.create(newUserEntity);

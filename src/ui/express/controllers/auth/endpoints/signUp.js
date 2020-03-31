@@ -13,7 +13,7 @@ module.exports = [
   (req, res, next) => {
     const signUp = req.container.resolve('SignUp');
     const {
-      SUCCESS, ERROR, BAD_EMAIL, BAD_PASSWORD, ALREADY_REGISTERED,
+      SUCCESS, ERROR, BAD_EMAIL, BAD_PASSWORD, ALREADY_REGISTERED, DUPLICATED_USERNAME,
     } = signUp.outputs;
 
     signUp
@@ -36,6 +36,12 @@ module.exports = [
         res.status(Status.NOT_FOUND).json({
           type: error.message,
           message: 'Email does not identify any user',
+        });
+      })
+      .on(DUPLICATED_USERNAME, (error) => {
+        res.status(Status.NOT_FOUND).json({
+          type: error.message,
+          message: 'Username already in database',
         });
       })
       .on(ERROR, (err) => {

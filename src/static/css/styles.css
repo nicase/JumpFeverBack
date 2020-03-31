@@ -116,6 +116,18 @@ html,
   background-color: #33717f;
 }
 
+.error {
+  background-color: rgb(167, 12, 46);
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.success {
+  background-color: rgb(37, 156, 7);
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .verticalLine {
   border-left: 8px solid black;
   height: 50vh;
