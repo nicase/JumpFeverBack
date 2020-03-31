@@ -74,6 +74,7 @@ class Game {
         this.move = false
         this.generatePlatforms()
         this.me = new Player(d.width/2, d.height - 20)
+        this.players = []
         for (let i = 0; i < this.others.length; ++i) {
             this.players.push(new Player(d.width/2, d.height - 20, this.others[i]))
         }
@@ -85,18 +86,17 @@ class Game {
         checkKeys()
         d.clearAll()
         d.backbroung("#000000")
-        let minY = d.height;
 
         for (let i = 0; i < this.players.length; ++i) {
             let p = this.players[i]
             p.update_other()
         }
 
+        let minY = this.me.posY;
         for (let i = 0; i < this.players.length; ++i) {
             minY = Math.min(minY, this.players[i].posY);
         }
         minY = Math.min(minY, this.me.posY);
-
         if (minY < 50) this.platformsVel = 0.8
         else if (minY < 100) this.platformsVel = 0.7
         else if (minY < 150) this.platformsVel = 0.6
@@ -216,9 +216,9 @@ function checkKeys() {
 
 const cnv = document.getElementById("mycanvas")
 cnv.height = document.documentElement.clientHeight - 50;
-
+cnv.width = 0.85 * cnv.height
 const d = new drawTool("mycanvas")
-const g = new Game(Math.random()*9999, [1])
+const g = new Game(Math.random()*9999, [])
 g.start()
 var updateAll = () => g.update()
 

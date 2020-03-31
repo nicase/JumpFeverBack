@@ -26,7 +26,9 @@ module.exports = [
       .on(ERROR, (err) => {
         next(err);
       });
-
+    console.log("-------------------------")
+    console.log(req)
+    console.log("-------------------------")
     return createMatch.execute(req.body);
   },
 ];

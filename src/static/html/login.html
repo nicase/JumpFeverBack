@@ -9,20 +9,23 @@
         <div class="loginLeft">
             <h1 class="dbTitol">Login</h1>
             <form onsubmit="try_login(); return false">
-                <input id="usernameInput" type="text" placeholder="Username"> <br>
-                <input id="passwordInput" type="password" placeholder="Password"> <br>
+                <input id="usernameLoginInput" type="text" placeholder="Username"> <br>
+                <input id="passwordLoginInput" type="password" placeholder="Password"> <br>
                 <input id="submit" class="button" type="submit" value="Login"> <br>
             </form>
+            <h5 class="error"><span id="loginError"></span></h5>
         </div>
         <div class="verticalLine"></div>
         <div class="loginRight">
             <h1 class="dbTitol">Sign Up</h1>
-            <form onsubmit="try_login(); return false">
-                <input id="usernameInput" type="text" placeholder="Username"> <br>
-                <input id="emailInput" type="text" placeholder="Email"> <br>
-                <input id="passwordInput" type="password" placeholder="Password"> <br>
+            <form onsubmit="try_signup(); return false">
+                <input id="usernameSignupInput" type="text" placeholder="Username"> <br>
+                <input id="emailSignupInput" type="text" placeholder="Email"> <br>
+                <input id="passwordSignupInput" type="password" placeholder="Password"> <br>
                 <input id="submit" class="button" type="submit" value="Sign Up"> <br>
             </form>
+            <h5 class="error"><span id="signupError"></span></h5>
+            <h5 class="success"><span id="signupSuccess"></span></h5>
         </div>
     </div>
 </body>

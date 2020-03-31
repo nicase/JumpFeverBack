@@ -9,7 +9,7 @@ class SignUp extends Operation {
 
   async execute(userData) {
     const {
-      SUCCESS, ERROR, BAD_EMAIL, BAD_PASSWORD, ALREADY_REGISTERED,
+      SUCCESS, ERROR, BAD_EMAIL, BAD_PASSWORD, ALREADY_REGISTERED, DUPLICATED_USERNAME,
     } = this.outputs;
     let user;
 
@@ -21,6 +21,9 @@ class SignUp extends Operation {
     } catch (error) {
       if (error.message === 'DuplicateEmailError') {
         return this.emit(ALREADY_REGISTERED, error);
+      }
+      if (error.message === 'DuplicatedUsername') {
+        return this.emit(DUPLICATED_USERNAME, error);
       }
       if (error.message === 'BadEmailError') {
         return this.emit(BAD_EMAIL, error);
@@ -35,7 +38,7 @@ class SignUp extends Operation {
 }
 
 SignUp.setOutputs(
-  ['SUCCESS', 'ERROR', 'BAD_EMAIL', 'BAD_PASSWORD', 'ALREADY_REGISTERED'],
+  ['SUCCESS', 'ERROR', 'BAD_EMAIL', 'BAD_PASSWORD', 'ALREADY_REGISTERED', 'DUPLICATED_USERNAME'],
 );
 
 module.exports = SignUp;
