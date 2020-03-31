@@ -34,19 +34,19 @@
 
             var xOther, yOther;
             var query = window.location.search.substring(1);
-            var vars = query.split("&");
-            var socket = io('http://localhost:5000');
-            socket.on('player' + vars[0], function (data) {
-                xOther = data.x;
-                yOther = data.y;
-                console.log(data)
-            });
+            // var vars = query.split("&");
+            // var socket = io('http://localhost:5000');
+            // socket.on('player' + vars[0], function (data) {
+            //     xOther = data.x;
+            //     yOther = data.y;
+            //     console.log(data)
+            // });
 
             function emitPosition(x, y) {
-                socket.emit('player' + vars[0], {
-                    'x': x,
-                    'y': y
-                });
+                // socket.emit('player' + vars[0], {
+                //     'x': x,
+                //     'y': y
+                // });
             }
         </script>
 

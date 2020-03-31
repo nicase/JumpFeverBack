@@ -24,6 +24,9 @@ function save_data_login(resp) {
   if (resp.token) {
     const username = document.getElementById('usernameInput').value;
     localStorage.setItem('token', resp.token);
+    localStorage.setItem('userId', resp.user._id);
+    localStorage.setItem('email', resp.user.email);
+    localStorage.setItem('xp', resp.user.XP);
     localStorage.setItem('username', username);
     // Redirect
     document.cookie = `token=${resp.token}`;
