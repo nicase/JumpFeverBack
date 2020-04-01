@@ -14,11 +14,6 @@
             </div>
         </div>
         <canvas id="mycanvas" width="500" height="500"></canvas>
-        <script src="/js/data.js"></script>
-        <script src="/js/draw.js"></script>
-        <script src="/js/platform.js"></script>
-        <script src="/js/player.js"></script>
-        <script src="/js/game.js"></script>
 
         <div id="right" class="text-center mx-2">
             <!-- tbyt -->
@@ -29,36 +24,12 @@
             <p class="wait" id="codeMatch">Code: </p>
 
         </div>
-        <script>
-            let matchId = localStorage.getItem('matchId');
-            document.getElementById('codeMatch').innerText = "Code: " + matchId;
-
-            function updatePanelColor() {
-                let lvl = g.currentLevel
-                document.getElementById("right").style.backgroundColor = "#" +
-                    dataColors[lvl].toString(16)
-                document.getElementById("left").style.backgroundColor = "#" +
-                    dataColors[lvl].toString(16)
-            }
-
-            var xOther, yOther;
-            var query = window.location.search.substring(1);
-            var vars = query.split("&");
-            var socket = io('http://localhost:5000');
-            socket.on('player' + vars[0], function (data) {
-                xOther = data.x;
-                yOther = data.y;
-                console.log(data)
-            });
-
-            function emitPosition(x, y) {
-                socket.emit('player' + vars[0], {
-                    'x': x,
-                    'y': y
-                });
-            }
-        </script>
-
     </div>
 
+    <script src="/js/data.js"></script>
+    <script src="/js/draw.js"></script>
+    <script src="/js/platform.js"></script>
+    <script src="/js/player.js"></script>
+    <script src="/js/game.js"></script>
+    <script src="/js/start.js"></script>
 </body>

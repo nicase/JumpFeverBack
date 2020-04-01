@@ -22,8 +22,8 @@ function joinGame() {
   let user2 = localStorage.getItem('userId')
   put(url, {user2}, (res, status) => {
     if (status == 200) {
-      window.location.href = "/match/" + matchID;
       saveMatchID(matchID);
+      window.location.href = "/match/" + matchID;
     }
     else {
       console.log("Wrong match id!");
