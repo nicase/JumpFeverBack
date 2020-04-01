@@ -22,15 +22,17 @@
 
         <div id="right" class="text-center mx-2">
             <!-- tbyt -->
-            <p id="wait">
-
+            <p class="wait">
                 While we wait your friend to connect, practice your skills!
-                <br><br><br>
-                Code: 1234tonto
-
             </p>
+            <br><br><br>
+            <p class="wait" id="codeMatch">Code: </p>
+
         </div>
         <script>
+            let matchId = localStorage.getItem('matchId');
+            document.getElementById('codeMatch').innerText = "Code: " + matchId;
+
             function updatePanelColor() {
                 let lvl = g.currentLevel
                 document.getElementById("right").style.backgroundColor = "#" +
