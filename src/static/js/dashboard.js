@@ -20,7 +20,7 @@ function joinGame() {
 
   var matchID = document.getElementById("code").value
   saveMatchID(matchID)
-  var url = "/api/match/" + matchID;
+  var url = "/match/" + matchID;
   //console.log(url)
   window.location.replace(url);
 
