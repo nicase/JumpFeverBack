@@ -13,9 +13,10 @@ class StartMatch extends Operation {
 
     try {
       const io = socketio(server);
+      const seed = Math.floor(Math.random() * 10000);
       io.on('connection', (socket) => {
-        socket.emit('player1', { hello: 'player1 socket' });
-        socket.emit('player2', { hello: 'player2 socket' });
+        socket.emit('player1', { seed });
+        socket.emit('player2', { seed });
 
         socket.on('player1', (data) => {
           io.sockets.emit('player2', data);
