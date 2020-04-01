@@ -21,7 +21,7 @@ function joinGame() {
   let url = '/api/match/' + matchID + '/join';
   let user2 = localStorage.getItem('userId')
   put(url, {user2}, (res, status) => {
-    if (status != 200) {
+    if (status == 200) {
       window.location.href = "/match/" + matchID;
       saveMatchID(matchID);
     }
