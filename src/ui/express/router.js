@@ -42,6 +42,9 @@ router.get('/game', (req, res) => {
   else { res.sendFile(path.resolve(path.join(__dirname, '../../static/html/game.html'))); }
 });
 
+router.get('/ranking', (req, res) => {
+  res.sendFile(path.resolve(path.join(__dirname, '../../static/html/ranking.html')));
+});
 
 router.get('/signup', (req, res) => {
   res.send('Sign up :)');

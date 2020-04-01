@@ -1,4 +1,4 @@
-function get(url, load, callback) {
+function get(url, callback) {
   const req = new XMLHttpRequest(); // new HttpRequest instance
   req.open('GET', url);
   req.setRequestHeader('Content-Type', 'application/json');
@@ -6,89 +6,94 @@ function get(url, load, callback) {
   req.setRequestHeader('Authorization', tokenHeader);
   req.onreadystatechange = () => {
     if (req.readyState == XMLHttpRequest.DONE) {
-      callback(req.responseText);
+      callback(req.response);
     }
   };
-  req.send(JSON.stringify(load));
+  req.send();
 }
 function error() {
   console.log('Something went wrong!');
 }
 
-function save_data_login(resp) {
+function displayRanking(resp) {
   try {
     resp = JSON.parse(resp);
   } catch (err) {
     error();
   }
-  // Login correcte
-  if (resp.token) {
-    console.log(resp);
-    const username = document.getElementById('usernameLoginInput').value;
-    localStorage.setItem('token', resp.token);
-    localStorage.setItem('userId', resp.user._id);
-    localStorage.setItem('email', resp.user.email);
-    localStorage.setItem('xp', resp.user.XP);
-    localStorage.setItem('username', username);
-    // Redirect
-    document.cookie = `token=${resp.token}`;
-    window.location.href = '/dashboard';
-  }
-  // Login incorrecte
-  else {
-    console.log(resp);
-    document.getElementById('loginError').innerHTML = resp;
-    error();
-  }
-}
-
-function save_data_signup(resp) {
-  try {
-    resp = JSON.parse(resp);
-  } catch (err) {
-    error();
-  }
-  // Sign Up correcte
-  if (resp.username) {
-    document.getElementById('signupError').innerHTML = null;
-    document.getElementById('signupSuccess').innerHTML = 'Successfully Signed Up, Please Log In';
-  }
-  // Sign Up incorrecte
-  else {
-    console.log(resp);
-    let errorLabel = '';
-    if (resp.errors) {
-      for (const err of resp.errors) {
-        errorLabel += `${err.msg}: ${err.param} <br>`;
+  console.log(resp);
+  if (resp.length > 0) {
+    if (resp[0].role == 'admin') {
+      document.getElementById('oneUsername').setAttribute('class', 'adminClass');
+    }
+    document.getElementById('oneUsername').innerHTML = resp[0].username;
+    document.getElementById('oneXP').innerHTML = resp[0].XP;
+    if (resp.length > 1) {
+      if (resp[1].role == 'admin') {
+        document.getElementById('oneUsername').setAttribute('class', 'adminClass');
       }
-    } else errorLabel = resp.message;
-    document.getElementById('signupError').innerHTML = errorLabel;
-    error();
+      document.getElementById('twoUsername').innerHTML = resp[1].username;
+      document.getElementById('twoXP').innerHTML = resp[1].XP;
+      if (resp.length > 2) {
+        if (resp[2].role == 'admin') {
+          document.getElementById('oneUsername').setAttribute('class', 'adminClass');
+        }
+        document.getElementById('threeUsername').innerHTML = resp[2].username;
+        document.getElementById('threeXP').innerHTML = resp[2].XP;
+        if (resp.length > 3) {
+          if (resp[3].role == 'admin') {
+            document.getElementById('oneUsername').setAttribute('class', 'adminClass');
+          }
+          document.getElementById('fourUsername').innerHTML = resp[3].username;
+          document.getElementById('fourXP').innerHTML = resp[3].XP;
+          if (resp.length > 4) {
+            if (resp[4].role == 'admin') {
+              document.getElementById('oneUsername').setAttribute('class', 'adminClass');
+            }
+            document.getElementById('fiveUsername').innerHTML = resp[4].username;
+            document.getElementById('fiveXP').innerHTML = resp[4].XP;
+            if (resp.length > 5) {
+              if (resp[5].role == 'admin') {
+                document.getElementById('oneUsername').setAttribute('class', 'adminClass');
+              }
+              document.getElementById('sixUsername').innerHTML = resp[5].username;
+              document.getElementById('sixXP').innerHTML = resp[5].XP;
+              if (resp.length > 6) {
+                if (resp[6].role == 'admin') {
+                  document.getElementById('oneUsername').setAttribute('class', 'adminClass');
+                }
+                document.getElementById('sevenUsername').innerHTML = resp[6].username;
+                document.getElementById('sevenXP').innerHTML = resp[6].XP;
+                if (resp.length > 7) {
+                  if (resp[7].role == 'admin') {
+                    document.getElementById('oneUsername').setAttribute('class', 'adminClass');
+                  }
+                  document.getElementById('eightUsername').innerHTML = resp[7].username;
+                  document.getElementById('eightXP').innerHTML = resp[7].XP;
+                  if (resp.length > 8) {
+                    if (resp[8].role == 'admin') {
+                      document.getElementById('oneUsername').setAttribute('class', 'adminClass');
+                    }
+                    document.getElementById('nineUsername').innerHTML = resp[8].username;
+                    document.getElementById('nineXP').innerHTML = resp[8].XP;
+                    if (resp.length > 9) {
+                      if (resp[9].role == 'admin') {
+                        document.getElementById('oneUsername').setAttribute('class', 'adminClass');
+                      }
+                      document.getElementById('tenUsername').innerHTML = resp[9].username;
+                      document.getElementById('tenXP').innerHTML = resp[9].XP;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 
-function try_login() {
-  const username = document.getElementById('usernameLoginInput').value;
-  const password = document.getElementById('passwordLoginInput').value;
-
-  const load = {
-    username,
-    password,
-  };
-
-  post('/api/auth/login', load, save_data_login);
-}
-
-function try_signup() {
-  const username = document.getElementById('usernameSignupInput').value;
-  const email = document.getElementById('emailSignupInput').value;
-  const password = document.getElementById('passwordSignupInput').value;
-
-  const load = {
-    username,
-    email,
-    password,
-  };
-
-  post('/api/auth/signup', load, save_data_signup);
-}
+window.onload = function () {
+  get('/api/user/ranking', displayRanking);
+};
