@@ -2,11 +2,11 @@ const Status = require('http-status');
 const { param, body } = require('express-validator');
 
 const {
-  checkBadRequestErrors, checkUserAuthenticated,
+  checkBadRequestErrors, checkUserAuthenticated, userIsAdmin,
 } = require('../../../middlewares');
 
 module.exports = [
-  checkUserAuthenticated,
+  checkUserAuthenticated, userIsAdmin,
   [
     param('id').isMongoId(),
     body('name').if(body('name').exists()).isString(),
