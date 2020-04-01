@@ -66,6 +66,7 @@ html,
   color: black;
   margin-top: 10vh;
 }
+
 .titolGame {
   font-family: retroFont;
   font-size: 60;
@@ -191,7 +192,6 @@ input {
 }
 
 .backbutton {
-
   display: inline-block;
   cursor: pointer;
   height: 5%;

@@ -1,0 +1,23 @@
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/ending.css">
+    <title>Jump fever</title>
+</head>
+
+<body>
+    <script>
+        window.onload = function () {
+            localStorage.removeItem('matchStarted');
+            localStorage.removeItem('machId');
+        };
+    </script>
+    <div class="container-fluid bg-success">
+        <div class="row full-height text-center">
+            <div class="col my-auto">
+                <h1 class="retroFont">You Won</h1>
+                <a href="dashboard" class="btn btn-dark">Back to Dashboard</a>
+            </div>
+        </div>
+    </div>
+</body>

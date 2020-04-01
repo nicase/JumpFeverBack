@@ -24,3 +24,12 @@
 .adminClass {
     color: green;
 }
+
+.backbutton {
+    display: inline-block;
+    cursor: pointer;
+    height: 5%;
+    width: 5%;
+    margin-right: 80%;
+    margin-top: 60%;
+}

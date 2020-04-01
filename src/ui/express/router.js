@@ -46,14 +46,27 @@ router.get('/ranking', (req, res) => {
   res.sendFile(path.resolve(path.join(__dirname, '../../static/html/ranking.html')));
 });
 
+router.get('/win', (req, res) => {
+  res.sendFile(path.resolve(path.join(__dirname, '../../static/html/win.html')));
+});
+
+router.get('/lose', (req, res) => {
+  res.sendFile(path.resolve(path.join(__dirname, '../../static/html/lose.html')));
+});
+
 router.get('/signup', (req, res) => {
   res.send('Sign up :)');
 });
 
-router.get('/match/:matchId', (req, res) => {
+router.get('/match/1/:matchId', (req, res) => {
   const { token } = req.cookies;
   if (!token) res.redirect('/login');
   else { res.sendFile(path.resolve(path.join(__dirname, '../../static/html/createGame.html'))); }
+});
+router.get('/match/:matchId', (req, res) => {
+  const { token } = req.cookies;
+  if (!token) res.redirect('/login');
+  else { res.sendFile(path.resolve(path.join(__dirname, '../../static/html/joinGame.html'))); }
 });
 
 // router.get('/*', (req, res) => {

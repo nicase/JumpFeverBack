@@ -95,5 +95,7 @@ function displayRanking(resp) {
 }
 
 window.onload = function () {
+  localStorage.removeItem('matchStarted');
+  localStorage.removeItem('machId');
   get('/api/user/ranking', displayRanking);
 };
