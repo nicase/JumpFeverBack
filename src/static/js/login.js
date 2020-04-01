@@ -31,7 +31,7 @@ function save_data_login(resp) {
     localStorage.setItem('username', username);
     // Redirect
     document.cookie = `token=${resp.token}`;
-    window.location.replace('/dashboard');
+    window.location.href = '/dashboard';
   }
   // Login incorrecte
   else {
