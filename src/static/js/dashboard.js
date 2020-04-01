@@ -1,12 +1,12 @@
-function get(url, load, callback) {
+function put(url, load, callback) {
   var req = new XMLHttpRequest();   // new HttpRequest instance
-  req.open("POST", url);
+  req.open("PUT", url);
   req.setRequestHeader("Content-Type", "application/json");
   let tokenHeader = 'Bearer ' + localStorage.getItem('token');
   req.setRequestHeader('Authorization', tokenHeader);
   req.onreadystatechange = () => {
     if (req.readyState == XMLHttpRequest.DONE) {
-      callback(req.responseText)
+      callback(req.responseText, req.status)
     }
   }
   req.send(JSON.stringify(load));
@@ -17,13 +17,18 @@ function saveMatchID(matchID) {
 }
 
 function joinGame() {
-
-  var matchID = document.getElementById("code").value
-  saveMatchID(matchID)
-  var url = "/match/" + matchID;
-  //console.log(url)
-  window.location.href = url;
-
+  var matchID = document.getElementById("code").value;
+  let url = '/api/match/' + matchID + '/join';
+  let user2 = localStorage.getItem('userId')
+  put(url, {user2}, (res, status) => {
+    if (status != 200) {
+      window.location.href = "/match/" + matchID;
+      saveMatchID(matchID);
+    }
+    else {
+      console.log("Wrong match id!");
+    }
+  })
 }
 
 
