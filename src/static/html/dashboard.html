@@ -4,6 +4,7 @@
     <link rel="stylesheet" type="text/css" href="/css/styles2.css">
     <title>Jump fever</title>
     <script src="/js/newMatch.js"></script>
+    <script src="/js/dashboard.js"></script>
 </head>
 
 <body>
@@ -30,13 +31,8 @@
                     <h1>Join game</h1>
                     <h4>Enter your friends code</h4>
                     <input id="code">
-                    <script>
-                        function saveMatchID() {
-                            var matchID = document.getElementById("code").value
-                            localStorage.setItem("matchID", matchID);
-                        }
-                    </script>
-                    <button href="/dashboard" onclick="saveMatchID()" class="button2">Join Game</button>
+
+                    <button href="/dashboard" onclick="joinGame()" class="button2">Join Game</button>
                 </div>
 
             </div>
