@@ -43,15 +43,14 @@ router.get('/game', (req, res) => {
 });
 
 
-router.get('/createGame', (req, res) => {
+router.get('/signup', (req, res) => {
+  res.send('Sign up :)');
+});
+
+router.get('/match/:matchId', (req, res) => {
   const { token } = req.cookies;
   if (!token) res.redirect('/login');
   else { res.sendFile(path.resolve(path.join(__dirname, '../../static/html/createGame.html'))); }
-});
-
-
-router.get('/signup', (req, res) => {
-  res.send('Sign up :)');
 });
 
 // router.get('/*', (req, res) => {
