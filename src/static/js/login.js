@@ -22,7 +22,8 @@ function save_data_login(resp) {
   }
   // Login correcte
   if (resp.token) {
-    const username = document.getElementById('usernameInput').value;
+    console.log(resp);
+    const username = document.getElementById('usernameLoginInput').value;
     localStorage.setItem('token', resp.token);
     localStorage.setItem('userId', resp.user._id);
     localStorage.setItem('email', resp.user.email);
@@ -48,6 +49,7 @@ function save_data_signup(resp) {
   }
   // Sign Up correcte
   if (resp.username) {
+    document.getElementById('signupError').innerHTML = null;
     document.getElementById('signupSuccess').innerHTML = 'Successfully Signed Up, Please Log In';
   }
   // Sign Up incorrecte
