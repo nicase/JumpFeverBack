@@ -15,8 +15,8 @@ class EndMatch extends Operation {
       const match = await this.matchService.get(matchdata.id);
       if (match.user1 === userId) {
         await this.matchService.update(matchdata.id, { winner: match.user2 });
-        await this.userService.winner(match.user2);
-        await this.userService.loser(match.user1);
+        await this.userService.winner(match.user1);
+        await this.userService.loser(match.user2);
       } else {
         await this.matchService.update(matchdata.id, { winner: match.user1 });
         await this.userService.winner(match.user2);

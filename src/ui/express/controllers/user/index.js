@@ -8,9 +8,12 @@ const deleteUser = require('./endpoints/deleteUser');
 // const deleteMe = require('./endpoints/deleteMe');
 const updateMe = require('./endpoints/updateMe');
 const updateUser = require('./endpoints/updateUser');
+const getRanking = require('./endpoints/getRanking');
 
 
 const userRouter = Router();
+
+userRouter.get('/ranking/', getRanking);
 
 // Authenticated
 userRouter.get('/me/', getMe);
