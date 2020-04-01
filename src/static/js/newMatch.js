@@ -24,7 +24,7 @@ function callback(resp) {
     error()
   }
   localStorage.setItem('matchId', resp._id);
-  window.location.replace("/match/" + resp._id);
+  window.location.href = "/match/" + resp._id;
 
 }
 

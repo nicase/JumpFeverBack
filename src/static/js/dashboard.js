@@ -22,6 +22,6 @@ function joinGame() {
   saveMatchID(matchID)
   var url = "/api/match/" + matchID;
   //console.log(url)
-  window.location.replace(url);
+  window.location.href = url;
 
 }
