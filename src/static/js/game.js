@@ -192,34 +192,11 @@ class Game {
     }
 }
 
-var keys = {}
-
-onkeydown = onkeyup = function(e){
-    e = e || event
-    keys[e.keyCode] = e.type == 'keydown'
+function updatePanelColor() {
+    let lvl = g.currentLevel
+    document.getElementById("right").style.backgroundColor = "#" +
+        dataColors[lvl].toString(16)
+    document.getElementById("left").style.backgroundColor = "#" +
+        dataColors[lvl].toString(16)
 }
 
-function checkKeys() {
-    // Up
-    if (keys[38]) {
-        g.me.jump()
-    }
-    // Left
-    if (keys[37]) {
-        g.me.moveLeft()
-    }
-    // Right
-    if (keys[39]) {
-        g.me.moveRight()
-    }
-}
-
-const cnv = document.getElementById("mycanvas")
-cnv.height = document.documentElement.clientHeight - 50;
-cnv.width = 0.85 * cnv.height
-const d = new drawTool("mycanvas")
-const g = new Game(Math.random()*9999, [])
-g.start()
-var updateAll = () => g.update()
-
-d.setInterval(updateAll, 2)
