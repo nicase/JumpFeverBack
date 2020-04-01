@@ -2,18 +2,18 @@ const Status = require('http-status');
 const { param, body } = require('express-validator');
 
 const {
-  checkBadRequestErrors, checkUserAuthenticated, userIsAdmin,
+  checkBadRequestErrors, checkUserAuthenticated,
 } = require('../../../middlewares');
 
 module.exports = [
-  checkUserAuthenticated, userIsAdmin,
+  checkUserAuthenticated,
   [
     param('id').isMongoId(),
     body('name').if(body('name').exists()).isString(),
   ],
   checkBadRequestErrors,
   (req, res, next) => {
-    const updateMatch = req.container.resolve('UpdateMatch');
+    const updateMatch = req.container.resolve('JoinMatch');
     const {
       SUCCESS, ERROR, NOT_FOUND,
     } = updateMatch.outputs;

@@ -7,6 +7,7 @@ const deleteMatch = require('./endpoints/deleteMatch');
 const getMatch = require('./endpoints/getMatch');
 const startMatch = require('./endpoints/startMatch');
 const endMatch = require('./endpoints/endMatch');
+const joinMatch = require('./endpoints/joinMatch');
 
 
 const matchRouter = Router();
@@ -17,6 +18,7 @@ matchRouter.post('/endMatch', endMatch);
 // Authenticated
 matchRouter.get('/', getAllMatchs);
 matchRouter.get('/:id/', getMatch);
+matchRouter.put('/:id/join', joinMatch);
 
 // Admin
 matchRouter.post('/', createMatch);
