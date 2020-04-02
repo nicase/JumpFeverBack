@@ -9,7 +9,7 @@ onkeydown = onkeyup = function (e) {
 
 function get(url, callback) {
   const req = new XMLHttpRequest(); // new HttpRequest instance
-  req.open('GET', `http://localhost:5000${url}`);
+  req.open('GET', `http://209.97.187.129:5000${url}`);
   req.setRequestHeader('Content-Type', 'application/json');
   const tokenHeader = `Bearer ${localStorage.getItem('token')}`;
   req.setRequestHeader('Authorization', tokenHeader);
@@ -23,7 +23,7 @@ function get(url, callback) {
 
 function post(url, load, callback) {
   const req = new XMLHttpRequest(); // new HttpRequest instance
-  req.open('POST', `http://localhost:5000${url}`);
+  req.open('POST', `http://209.97.187.129:5000${url}`);
   req.setRequestHeader('Content-Type', 'application/json');
   const tokenHeader = `Bearer ${localStorage.getItem('token')}`;
   req.setRequestHeader('Authorization', tokenHeader);
@@ -108,7 +108,7 @@ function checkStatus() {
 let statusInterval = setInterval(checkStatus, 1000);
 
 function startRealGame() {
-  const socket = io('http://localhost:5000');
+  const socket = io('http://209.97.187.129:5000');
   socket.on('seed', (data) => {
     console.log(data);
     g = new Game(data.seed, [2]);
