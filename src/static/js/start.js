@@ -53,8 +53,9 @@ function checkKeys() {
 let xOther = null;
 let yOther = null;
 const cnv = document.getElementById('mycanvas');
-cnv.height = document.documentElement.clientHeight - 50;
+cnv.height = 650;
 cnv.width = 500;
+console.log(cnv.height);
 
 const d = new drawTool('mycanvas');
 let g = new Game(Math.random() * 9999, []);

@@ -38,7 +38,7 @@ function checkKeys() {
 }
 
 const cnv = document.getElementById('mycanvas');
-cnv.height = document.documentElement.clientHeight - 50;
+cnv.height = 650;
 cnv.width = 500;
 
 let xOther = null;
