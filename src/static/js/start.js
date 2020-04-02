@@ -9,7 +9,7 @@ onkeydown = onkeyup = function (e) {
 
 function get(url, callback) {
   const req = new XMLHttpRequest(); // new HttpRequest instance
-  req.open('GET', url);
+  req.open('GET', `http://localhost:5000${url}`);
   req.setRequestHeader('Content-Type', 'application/json');
   const tokenHeader = `Bearer ${localStorage.getItem('token')}`;
   req.setRequestHeader('Authorization', tokenHeader);
@@ -23,7 +23,7 @@ function get(url, callback) {
 
 function post(url, load, callback) {
   const req = new XMLHttpRequest(); // new HttpRequest instance
-  req.open('POST', url);
+  req.open('POST', `http://localhost:5000${url}`);
   req.setRequestHeader('Content-Type', 'application/json');
   const tokenHeader = `Bearer ${localStorage.getItem('token')}`;
   req.setRequestHeader('Authorization', tokenHeader);
