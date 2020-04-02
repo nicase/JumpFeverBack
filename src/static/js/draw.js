@@ -6,9 +6,9 @@ function drawTool (canvas) {
         this.height = this.canv.height;
         this.xOffset = 0;
         this.yOffset = 0;
+        this.currentInterval = undefined;
+    }
 
-    }    
-    
     if (canvas != undefined) {
         this.setup(canvas);
     }
@@ -16,8 +16,8 @@ function drawTool (canvas) {
     this.dot = (x, y, options={color:'red'}) => {
         this.ctx.fillStyle = options.color;
         this.ctx.fillRect(x, y, 1, 1);
-    } 
-    
+    }
+
     this.rectangle = (x, y, w, h, options) => {
 
         var opt = initOptions(options)
@@ -40,7 +40,7 @@ function drawTool (canvas) {
             this.ctx.strokeStyle = opt.sColor;
             this.ctx.lineWidth = opt.sWidth;
             this.ctx.strokeRect(posX, posY, w, h);
-            this.ctx.closePath();        
+            this.ctx.closePath();
         }
     }
 
@@ -65,31 +65,31 @@ function drawTool (canvas) {
         if (opt.fill) {
             this.ctx.fill();
         }
-        if (opt.stroke) {  
+        if (opt.stroke) {
             this.ctx.strokeStyle = opt.sColor;
             this.ctx.lineWidth = opt.sWidth;
             this.ctx.stroke();
         }
-        this.ctx.closePath();        
+        this.ctx.closePath();
     }
 
     this.line = (x1, y1, x2, y2, options) => {
         if (options === undefined) var opt = {};
         else var opt = options;
-        if (opt.color === undefined) opt.color = 'black'; 
-        if (opt.width === undefined) opt.width = 1; 
+        if (opt.color === undefined) opt.color = 'black';
+        if (opt.width === undefined) opt.width = 1;
 
-        this.ctx.beginPath(); 
+        this.ctx.beginPath();
         this.ctx.moveTo(x1, y1);
         this.ctx.lineTo(x2, y2);
         this.ctx.lineWidth = opt.width;
-        this.ctx.strokeStyle = opt.color; 
-        this.ctx.stroke(); 
-        this.ctx.closePath();        
+        this.ctx.strokeStyle = opt.color;
+        this.ctx.stroke();
+        this.ctx.closePath();
     }
 
     this.startFillLine = (x, y) => {
-        this.ctx.beginPath(); 
+        this.ctx.beginPath();
         this.ctx.moveTo(x, y);
     };
 
@@ -100,25 +100,26 @@ function drawTool (canvas) {
     this.endFillLine = (options) => {
         if (options === undefined) var opt = {};
         else var opt = options;
-        if (opt.color === undefined) opt.color = 'black'; 
-        if (opt.width === undefined) opt.width = 1; 
+        if (opt.color === undefined) opt.color = 'black';
+        if (opt.width === undefined) opt.width = 1;
         this.ctx.lineWidth = opt.width;
         this.ctx.fillStyle = opt.color;
         this.ctx.fill();
-        this.ctx.closePath();      
+        this.ctx.closePath();
     }
 
     this.clearRect = (x1, y1, x2, y2, color='white') => {
         this.ctx.fillStyle = color;
         this.ctx.clearRect(x1, y1, x2, y2);
-    } 
-    
+    }
+
     this.clearAll = () => {
         this.ctx.clearRect(0 - this.xOffset, 0 - this.yOffset, d.width, d.height);
     }
 
     this.setInterval = (fun, frames) => {
-        setInterval(fun, frames);
+        clearInterval(this.currentInterval);
+        this.currentInterval = setInterval(fun, frames);
     }
 
     this.rotate = (angle) => {
@@ -133,6 +134,6 @@ function initOptions (options) {
     if (options.center === undefined) options.center = true;
     if (options.stroke === undefined) options.stroke = false;
     if (options.sWidth === undefined) options.sWidth = 1;
-    if (options.sColor === undefined) options.sColor = 'black';            
+    if (options.sColor === undefined) options.sColor = 'black';
     return options;
 }
